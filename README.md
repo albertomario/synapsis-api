@@ -6,7 +6,16 @@ A GDPR-compliant student information system designed with privacy-first principl
 
 This project uses **[Backlog.md](https://github.com/MrLesk/Backlog.md)** for task management. All tasks are managed as markdown files in the `backlog/` directory.
 
-### Quick Commands
+### For AI Assistants (GitHub Copilot)
+
+Backlog.md is integrated via MCP (Model Context Protocol). Use these MCP tools:
+- `mcp_backlog_task_search` / `mcp_backlog_task_list` - Find tasks
+- `mcp_backlog_task_view` - View task details
+- `mcp_backlog_task_create` - Create new tasks
+- `mcp_backlog_task_edit` - Update tasks (status, notes, acceptance criteria)
+- `mcp_backlog_get_workflow_overview` - Get workflow guidance
+
+### For Human Users
 
 ```bash
 # View Kanban board in terminal

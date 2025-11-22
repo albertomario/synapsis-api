@@ -2,6 +2,86 @@
 
 Quick reference for common Backlog.md operations in this project.
 
+## For AI Assistants (MCP Tools)
+
+GitHub Copilot and other AI assistants should use MCP tools to interact with tasks:
+
+### Query Tasks
+```typescript
+// List all tasks
+mcp_backlog_task_list({ limit: 20 })
+
+// List by status
+mcp_backlog_task_list({ status: "To Do" })
+mcp_backlog_task_list({ status: "In Progress" })
+
+// List subtasks of a parent
+mcp_backlog_task_list({ parent: "task-1" })
+
+// Search tasks
+mcp_backlog_task_search({ query: "authentication" })
+mcp_backlog_task_search({ query: "rls", status: "To Do", priority: "high" })
+
+// View task details
+mcp_backlog_task_view({ id: "task-1.11" })
+```
+
+### Manage Tasks
+```typescript
+// Create a task
+mcp_backlog_task_create({
+  title: "Implement OAuth provider",
+  description: "Add Google OAuth support for authentication",
+  status: "To Do",
+  priority: "high",
+  labels: ["auth", "oauth"],
+  parentTaskId: "task-1",
+  acceptanceCriteria: ["OAuth flow works", "Tokens are stored securely"]
+})
+
+// Update task status and add notes
+mcp_backlog_task_edit({
+  id: "task-1.11",
+  status: "In Progress",
+  notesAppend: ["Started implementing RLSQueryBuilder class"]
+})
+
+// Add/check acceptance criteria
+mcp_backlog_task_edit({
+  id: "task-1.11",
+  acceptanceCriteriaAdd: ["All RLS rules must be tested"],
+  acceptanceCriteriaCheck: [1]  // Mark first AC as complete
+})
+
+// Mark task complete
+mcp_backlog_task_edit({
+  id: "task-1.11",
+  status: "Done"
+})
+
+// Archive completed task
+mcp_backlog_task_archive({ id: "task-1.11" })
+```
+
+### Get Guidance
+```typescript
+// Get workflow overview (when to create tasks)
+mcp_backlog_get_workflow_overview()
+
+// Get task creation best practices
+mcp_backlog_get_task_creation_guide()
+
+// Get task execution guidance
+mcp_backlog_get_task_execution_guide()
+
+// Get completion checklist
+mcp_backlog_get_task_completion_guide()
+```
+
+---
+
+## For Human Users (CLI Commands)
+
 ## View Tasks
 
 ```bash

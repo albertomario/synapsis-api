@@ -12,10 +12,43 @@ Backlog.md turns your repository into a self-contained project board powered by 
 
 - 📝 **Markdown-native tasks** - Every task is a plain `.md` file
 - 🤖 **AI-Ready** - Works with Claude Code, Gemini CLI, GitHub Copilot, and other AI assistants via MCP (Model Context Protocol)
+- 🔧 **MCP Integration** - AI assistants interact with tasks directly through MCP tools
 - 📊 **Terminal Kanban** - `backlog board` displays a live board in your terminal
 - 🌐 **Web Interface** - `backlog browser` launches a modern web UI
 - 🔍 **Powerful search** - Fuzzy search across tasks, docs, and decisions
 - 🔒 **100% private & offline** - Everything lives in your repository
+
+## MCP Configuration
+
+This project has Backlog.md configured in `.vscode/mcp.json`:
+
+```json
+{
+  "servers": {
+    "backlog": {
+      "command": "backlog",
+      "args": ["mcp", "start"],
+      "type": "stdio",
+      "cwd": "${workspaceFolder}/snap-sis"
+    }
+  }
+}
+```
+
+### MCP Tools Available
+
+**For AI Assistants (GitHub Copilot, Claude, etc.):**
+
+- `mcp_backlog_task_list` - List and filter tasks
+- `mcp_backlog_task_view` - View task details
+- `mcp_backlog_task_search` - Search tasks
+- `mcp_backlog_task_create` - Create new tasks
+- `mcp_backlog_task_edit` - Update tasks
+- `mcp_backlog_task_archive` - Archive tasks
+- `mcp_backlog_get_workflow_overview` - Workflow guidance
+- `mcp_backlog_document_*` - Manage documentation
+
+AI assistants should use these MCP tools to interact with tasks rather than CLI commands.
 
 ## Installation
 

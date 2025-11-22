@@ -2,23 +2,45 @@
 
 ## 📋 Task Management
 
-**This project uses [Backlog.md](https://github.com/MrLesk/Backlog.md)** for task management. All tasks are stored in the `backlog/` directory.
+**This project uses [Backlog.md](https://github.com/MrLesk/Backlog.md)** for task management via MCP (Model Context Protocol). All tasks are stored in the `backlog/` directory.
 
-### Quick Task Commands
+### MCP Integration
+
+The Backlog.md MCP server is configured in `.vscode/mcp.json` and provides tools for AI assistants:
+
+**Query Tasks:**
+- `mcp_backlog_task_list` - List tasks with filtering (status, assignee, labels, parent)
+- `mcp_backlog_task_view` - View detailed task information by ID
+- `mcp_backlog_task_search` - Fuzzy search tasks by title/description
+
+**Manage Tasks:**
+- `mcp_backlog_task_create` - Create new tasks with full metadata
+- `mcp_backlog_task_edit` - Update status, assignees, labels, notes, acceptance criteria
+- `mcp_backlog_task_archive` - Archive completed tasks
+
+**Workflow Guidance:**
+- `mcp_backlog_get_workflow_overview` - When to use tasks vs direct action
+- `mcp_backlog_get_task_creation_guide` - Best practices for task creation
+- `mcp_backlog_get_task_execution_guide` - Planning and executing tasks
+- `mcp_backlog_get_task_completion_guide` - Definition of Done
+
+### AI Agent Workflow
+
+1. **Search first**: Use `mcp_backlog_task_search` or `mcp_backlog_task_list` to find existing tasks
+2. **View details**: Use `mcp_backlog_task_view` to get full task information
+3. **Update progress**: Use `mcp_backlog_task_edit` to update status and add notes
+4. **Create if needed**: Use `mcp_backlog_task_create` for new work items
+
+**Important**: Always use MCP tools to interact with tasks. Never edit markdown files directly.
+
+### CLI Commands (For Human Users)
+
 ```bash
 backlog board              # View Kanban board
 backlog browser            # Open web interface
-backlog task list          # List all tasks
-backlog task <id>          # View specific task
-backlog task edit <id>     # Update task status/notes
 ```
 
-### Working with Tasks
-- **Reference tasks** by ID (e.g., `task-1.11`) when implementing features
-- **Update task status** when starting work: `backlog task edit 1.11 -s "In Progress"`
-- **Add implementation notes**: `backlog task edit 1.11 --append-notes "Your notes here"`
-- **Mark complete**: `backlog task edit 1.11 -s "Done"`
-- See `BACKLOG-COMMANDS.md` for complete command reference
+See `BACKLOG-COMMANDS.md` for complete CLI reference
 
 ## Architecture Overview
 
