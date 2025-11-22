@@ -32,3 +32,10 @@ router
   })
   .prefix('/api/v1')
   .use(middleware.auth({ guards: ['api'] }))
+
+// Test route for middleware testing
+router
+  .get('/grades', async ({ response }) => {
+    return response.ok({ message: 'Grades endpoint' })
+  })
+  .use(middleware.auth({ guards: ['api'] }))

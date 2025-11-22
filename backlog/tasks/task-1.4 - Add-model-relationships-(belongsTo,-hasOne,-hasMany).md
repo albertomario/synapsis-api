@@ -1,9 +1,10 @@
 ---
 id: task-1.4
 title: 'Add model relationships (belongsTo, hasOne, hasMany)'
-status: To Do
+status: Done
 assignee: []
 created_date: '2025-11-22 12:42'
+updated_date: '2025-11-22 13:29'
 labels:
   - auth
   - models
