@@ -1,4 +1,5 @@
 import vine from '@vinejs/vine'
+import { passwordComplexity } from './password.js'
 
 export const loginValidator = vine.compile(
   vine.object({
@@ -12,7 +13,7 @@ export const loginValidator = vine.compile(
 export const registerValidator = vine.compile(
   vine.object({
     email: vine.string().email(),
-    password: vine.string().minLength(8),
+    password: vine.string().use(passwordComplexity()).confirmed(),
     full_name: vine.string().minLength(3),
     handle: vine.string().minLength(3),
     user_type: vine.enum(['student', 'teacher', 'parent']),
