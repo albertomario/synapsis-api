@@ -1,5 +1,10 @@
 import env from '#start/env'
 import { defineConfig } from '@adonisjs/lucid'
+import pg from 'pg'
+
+// Configure pg to parse jsonb columns as objects
+pg.types.setTypeParser(pg.types.builtins.JSONB, (val) => JSON.parse(val))
+pg.types.setTypeParser(pg.types.builtins.JSON, (val) => JSON.parse(val))
 
 const dbConfig = defineConfig({
   connection: 'postgres',
@@ -16,6 +21,14 @@ const dbConfig = defineConfig({
       migrations: {
         naturalSort: true,
         paths: ['database/migrations'],
+      },
+      useNullAsDefault: true,
+      pool: {
+        afterCreate: (conn: any, cb: any) => {
+          conn.query('SET timezone="UTC";', (err: any) => {
+            cb(err, conn)
+          })
+        },
       },
     },
   },
