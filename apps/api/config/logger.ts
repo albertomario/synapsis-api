@@ -18,6 +18,12 @@ const loggerConfig = defineConfig({
         targets: targets()
           .pushIf(!app.inProduction, targets.pretty())
           .pushIf(app.inProduction, targets.file({ destination: 1 }))
+          .push(
+            targets.file({
+              destination: app.makePath('tmp/logs/app.log'),
+              level: 'debug',
+            })
+          )
           .toArray(),
       },
     },
