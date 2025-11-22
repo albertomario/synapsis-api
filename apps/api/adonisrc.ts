@@ -78,6 +78,41 @@ export default defineConfig({
         name: 'functional',
         timeout: 30000,
       },
+      {
+        files: ['tests/functional/auth/**/*.spec(.ts|.js)'],
+        name: 'auth',
+        timeout: 30000,
+      },
+      {
+        files: ['tests/functional/audit/**/*.spec(.ts|.js)'],
+        name: 'audit',
+        timeout: 30000,
+      },
+      {
+        files: ['tests/functional/middleware/**/*.spec(.ts|.js)'],
+        name: 'middleware',
+        timeout: 30000,
+      },
+      {
+        files: ['tests/functional/grades/**/*.spec(.ts|.js)'],
+        name: 'grades',
+        timeout: 30000,
+      },
+      {
+        files: ['tests/functional/feed/**/*.spec(.ts|.js)'],
+        name: 'feed',
+        timeout: 30000,
+      },
+      {
+        files: ['tests/functional/gdpr/**/*.spec(.ts|.js)'],
+        name: 'gdpr',
+        timeout: 30000,
+      },
+      {
+        files: ['tests/functional/assignments/**/*.spec(.ts|.js)'],
+        name: 'assignments',
+        timeout: 30000,
+      },
     ],
     forceExit: false,
   },
