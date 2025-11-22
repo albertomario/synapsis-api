@@ -2,7 +2,7 @@
 
 ## Overview
 
-Snap SIS implements a **token-based authentication** system using AdonisJS v6's `@adonisjs/auth` package with support for:
+Synapsis implements a **token-based authentication** system using AdonisJS v6's `@adonisjs/auth` package with support for:
 
 - Standard email/password login
 - WebAuthn biometric authentication (fingerprint, Face ID)
@@ -19,7 +19,7 @@ Snap SIS implements a **token-based authentication** system using AdonisJS v6's 
 │   (apps/web)    │
 └────────┬────────┘
          │ POST /api/v1/auth/login
-         │ Cookie: snap_token (HttpOnly)
+         │ Cookie: synapsis_token (HttpOnly)
          ▼
 ┌─────────────────────────┐
 │   AdonisJS API Gateway  │
@@ -75,7 +75,7 @@ Snap SIS implements a **token-based authentication** system using AdonisJS v6's 
 }
 ```
 
-**Cookie Set**: `snap_token=oat_xxx; HttpOnly; Secure; SameSite=Strict; Max-Age=604800`
+**Cookie Set**: `synapsis_token=oat_xxx; HttpOnly; Secure; SameSite=Strict; Max-Age=604800`
 
 **Controller Implementation**:
 ```typescript
@@ -118,7 +118,7 @@ export default class AuthController {
     await user.save()
     
     // 7. Set HttpOnly cookie
-    response.cookie('snap_token', token.value!.release(), {
+    response.cookie('synapsis_token', token.value!.release(), {
       httpOnly: true,
       secure: true,
       sameSite: 'strict',
@@ -177,8 +177,8 @@ export default class WebAuthnController {
     const verification = await verifyAuthenticationResponse({
       response: request.body(),
       expectedChallenge: challenge,
-      expectedOrigin: 'https://snap.school',
-      expectedRPID: 'snap.school'
+      expectedOrigin: 'https://synapsis.school',
+      expectedRPID: 'synapsis.school'
     })
     
     if (!verification.verified) {
@@ -204,7 +204,7 @@ async logout({ auth, response }: HttpContext) {
   await User.accessTokens.delete(auth.user!, auth.user!.currentAccessToken.identifier)
   
   // Clear cookie
-  response.clearCookie('snap_token')
+  response.clearCookie('synapsis_token')
   
   return { success: true }
 }

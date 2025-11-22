@@ -2,7 +2,7 @@
 
 ## Overview
 
-Snap SIS uses **PostgreSQL 16** with **Lucid ORM** (AdonisJS v6). All dates are stored in UTC and converted to local EU timezones on the frontend. The schema is designed with GDPR compliance as a primary concern, including Row Level Security (RLS) and audit logging.
+Synapsis uses **PostgreSQL 16** with **Lucid ORM** (AdonisJS v6). All dates are stored in UTC and converted to local EU timezones on the frontend. The schema is designed with GDPR compliance as a primary concern, including Row Level Security (RLS) and audit logging.
 
 ## Connection Configuration
 

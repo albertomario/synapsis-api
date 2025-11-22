@@ -1,5 +1,5 @@
 {
-  "name": "@snap/types",
+  "name": "@synapsis/types",
   "version": "0.0.0",
   "private": true,
   "main": "./dist/index.js",

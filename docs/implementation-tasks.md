@@ -1,8 +1,8 @@
-# Snap SIS - Implementation Tasks
+# Synapsis - Implementation Tasks
 
 ## Overview
 
-This document provides a step-by-step implementation guide for building the Snap SIS MVP. Tasks are organized into phases with dependencies clearly marked. Estimated effort is provided in hours.
+This document provides a step-by-step implementation guide for building the Synapsis MVP. Tasks are organized into phases with dependencies clearly marked. Estimated effort is provided in hours.
 
 ## Phase 1: Foundation & Infrastructure (Week 1)
 
@@ -239,10 +239,10 @@ This document provides a step-by-step implementation guide for building the Snap
 
 - [ ] **Task 3.1.2**: Setup API client (3h)
   - [ ] Create `lib/api.ts` with fetch wrapper
-  - [ ] Create `hooks/useSnapQuery.ts` custom hook
+  - [ ] Create `hooks/useSynapsisQuery.ts` custom hook
   - [ ] Add 401/403 error handling
   - [ ] Add `X-Timezone` header injection
-  - **Files**: `apps/web/lib/api.ts`, `apps/web/hooks/useSnapQuery.ts`
+  - **Files**: `apps/web/lib/api.ts`, `apps/web/hooks/useSynapsisQuery.ts`
 
 - [ ] **Task 3.1.3**: Create AuthContext (4h)
   - [ ] Create `contexts/AuthContext.tsx`
@@ -446,7 +446,7 @@ This document provides a step-by-step implementation guide for building the Snap
 
 ```bash
 # Initial setup
-cd snap-sis
+cd synapsis
 pnpm install
 
 # Start database

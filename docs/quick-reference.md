@@ -1,4 +1,4 @@
-# Snap SIS - Quick Reference
+# Synapsis - Quick Reference
 
 ## Essential Commands
 
@@ -53,20 +53,20 @@ pnpm lint                 # Run ESLint
 
 ### Database (Docker)
 ```bash
-cd snap-sis
+cd synapsis
 
 docker-compose up -d      # Start PostgreSQL
 docker-compose down       # Stop PostgreSQL
 docker-compose logs -f postgres # View logs
 
 # Direct PostgreSQL access
-docker exec -it snap-sis-postgres-1 psql -U root -d app
+docker exec -it synapsis-postgres-1 psql -U root -d app
 ```
 
 ## Project Structure
 
 ```
-snap-sis/
+synapsis/
 ├── apps/
 │   ├── api/                    # AdonisJS backend (port 3333)
 │   │   ├── app/
@@ -92,7 +92,7 @@ snap-sis/
 │       │   ├── vault/         # IdentityVault
 │       │   └── layout/        # PrivacyLayout
 │       ├── contexts/          # React contexts (Auth, Privacy)
-│       ├── hooks/             # Custom hooks (useSnapQuery)
+│       ├── hooks/             # Custom hooks (useSynapsisQuery)
 │       └── lib/               # Utilities, API client
 │
 ├── packages/
@@ -183,7 +183,7 @@ import User from '../../app/models/user'
 ### Frontend (Shared Types)
 ```typescript
 // ✅ CORRECT
-import type { GradeResponse, UserDTO } from '@snap/types'
+import type { GradeResponse, UserDTO } from '@synapsis/types'
 
 // ❌ WRONG
 import { Grade } from '../../../apps/api/app/models/grade' // Never import models!
@@ -217,10 +217,10 @@ async index({ auth }: HttpContext) {
 ### Frontend: API Call with Auth
 ```tsx
 // Using custom hook
-import { useSnapQuery } from '@/hooks/useSnapQuery'
+import { useSynapsisQuery } from '@/hooks/useSynapsisQuery'
 
 function GradesList() {
-  const { data, isLoading } = useSnapQuery('/api/v1/grades')
+  const { data, isLoading } = useSynapsisQuery('/api/v1/grades')
   
   if (isLoading) return <div>Loading...</div>
   

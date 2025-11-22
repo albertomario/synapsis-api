@@ -7,7 +7,7 @@ export default class extends BaseSeeder {
   async run() {
     // 1. Admin User
     await User.create({
-      email: 'admin@snap.school',
+      email: 'admin@synapsis.school',
       passwordHash: await hash.make('admin123'),
       fullName: 'Principal Skinner',
       handle: '@skinner',
@@ -21,7 +21,7 @@ export default class extends BaseSeeder {
 
     // 2. Teacher User
     const teacherUser = await User.create({
-      email: 'teacher@snap.school',
+      email: 'teacher@synapsis.school',
       passwordHash: await hash.make('teacher123'),
       fullName: 'Edna Krabappel',
       handle: '@edna_k',
@@ -44,7 +44,7 @@ export default class extends BaseSeeder {
 
     // 3. Student User (>16)
     const student1User = await User.create({
-      email: 'student1@snap.school',
+      email: 'student1@synapsis.school',
       passwordHash: await hash.make('student123'),
       fullName: 'Lisa Simpson',
       handle: '@lisa_s',
@@ -67,7 +67,7 @@ export default class extends BaseSeeder {
 
     // 4. Student User (<16)
     const student2User = await User.create({
-      email: 'student2@snap.school',
+      email: 'student2@synapsis.school',
       passwordHash: await hash.make('student123'),
       fullName: 'Bart Simpson',
       handle: '@bart_s',
@@ -90,7 +90,7 @@ export default class extends BaseSeeder {
 
     // 5. Parent User
     const parentUser = await User.create({
-      email: 'parent@snap.school',
+      email: 'parent@synapsis.school',
       passwordHash: await hash.make('parent123'),
       fullName: 'Marge Simpson',
       handle: '@marge_s',

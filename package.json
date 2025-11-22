@@ -1,5 +1,5 @@
 {
-  "name": "snap-sis-monorepo",
+  "name": "synapsis-monorepo",
   "private": true,
   "scripts": {
     "dev": "pnpm -r dev",

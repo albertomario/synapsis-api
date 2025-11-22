@@ -1,6 +1,6 @@
-# Snap SIS Documentation
+# Synapsis Documentation
 
-This directory contains comprehensive documentation for the Snap SIS project. Start here for implementation guidance, architecture details, and development workflows.
+This directory contains comprehensive documentation for the Synapsis project. Start here for implementation guidance, architecture details, and development workflows.
 
 ## 📚 Documentation Index
 
@@ -99,7 +99,7 @@ Developer cheat sheet:
 
 ### Monorepo Structure
 ```
-snap-sis/
+synapsis/
 ├── apps/api/          # AdonisJS v6 backend (ESM, TypeScript)
 ├── apps/web/          # Next.js 14+ frontend (App Router)
 └── packages/types/    # Shared TypeScript DTOs
@@ -135,7 +135,7 @@ const grades = await db.from('grades').select('*')
 #### 3. DTOs (Never Export Lucid Models)
 ```typescript
 // ✅ CORRECT
-import type { GradeResponse } from '@snap/types'
+import type { GradeResponse } from '@synapsis/types'
 
 return grades.map(g => ({
   id: g.id,

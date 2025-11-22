@@ -1,4 +1,4 @@
-# Snap SIS - AI Coding Agent Instructions
+# Synapsis - AI Coding Agent Instructions
 
 ## Architecture Overview
 
@@ -60,7 +60,7 @@ import UserController from '../../app/controllers/user_controller'
 
 ```typescript
 // apps/api/app/controllers/grades_controller.ts
-import type { GradeResponse } from '@snap/types'
+import type { GradeResponse } from '@synapsis/types'
 
 async index({ response }) {
   const grades = await Grade.all()
@@ -123,7 +123,7 @@ await request.validateUsing(schema)
 
 #### API Fetching
 - Use TanStack Query (React Query) for all API calls
-- Custom hook: `apps/web/hooks/useSnapQuery.ts` handles 401/403 errors
+- Custom hook: `apps/web/hooks/useSynapsisQuery.ts` handles 401/403 errors
 - Always pass `X-Timezone` header for UTC→Local conversion
 
 #### State Management
@@ -173,7 +173,7 @@ const { isPrivacyMode } = usePrivacyContext()
 
 ### Shared Types
 - `packages/types/src/index.ts`: All shared interfaces
-- Frontend imports as `@snap/types`
+- Frontend imports as `@synapsis/types`
 
 ## API Conventions
 

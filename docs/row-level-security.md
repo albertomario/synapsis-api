@@ -2,9 +2,9 @@
 
 ## Overview
 
-Row Level Security (RLS) is a critical privacy feature that ensures users can only access data they are authorized to see. In Snap SIS, RLS is implemented at the **application level** using a custom wrapper function that automatically filters database queries based on the authenticated user's context.
+Row Level Security (RLS) is a critical privacy feature that ensures users can only access data they are authorized to see. In Synapsis, RLS is implemented at the **application level** using a custom wrapper function that automatically filters database queries based on the authenticated user's context.
 
-## Why RLS is Critical for Snap SIS
+## Why RLS is Critical for Synapsis
 
 1. **GDPR Compliance**: Users must only access their own data or data explicitly shared with them
 2. **Student Privacy**: Students can only see their own grades and assignments
@@ -322,7 +322,7 @@ export async function can(user: User, action: string, resource: any): Promise<bo
 // apps/api/app/controllers/grades_controller.ts
 import type { HttpContext } from '@adonisjs/core/http'
 import { withRLS } from '#services/db_service'
-import type { GradeResponse } from '@snap/types'
+import type { GradeResponse } from '@synapsis/types'
 
 export default class GradesController {
   /**
