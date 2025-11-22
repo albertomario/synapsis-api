@@ -29,8 +29,9 @@ test.group('Auth login', (group) => {
 
     response.assertStatus(200)
     response.assertBodyContains({
-      token: {},
+      type: 'bearer',
     })
+    response.assert?.isString(response.body().value)
   })
 
   test('fail to login with invalid credentials', async ({ client }) => {
@@ -55,5 +56,10 @@ test.group('Auth login', (group) => {
     })
 
     response.assertStatus(400)
+    response.assertBodyContains({
+      error: {
+        code: 'INVALID_CREDENTIALS',
+      },
+    })
   })
 })

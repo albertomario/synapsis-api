@@ -11,7 +11,8 @@ test.group('Auth register', (group) => {
 
     const response = await client.post('/auth/register').json({
       email,
-      password: 'password123',
+      password: 'StrongP@ss9!',
+      password_confirmation: 'StrongP@ss9!',
       full_name: 'New User',
       handle,
       user_type: 'student',
@@ -45,7 +46,8 @@ test.group('Auth register', (group) => {
 
     const response = await client.post('/auth/register').json({
       email,
-      password: 'password123',
+      password: 'StrongP@ss9!',
+      password_confirmation: 'StrongP@ss9!',
       full_name: 'New User',
       handle: `newhandle_${Date.now()}`,
       user_type: 'student',
@@ -54,9 +56,11 @@ test.group('Auth register', (group) => {
     })
 
     response.assertStatus(422)
-    // VineJS error structure
     response.assertBodyContains({
-      errors: [{ field: 'email' }],
+      error: {
+        code: 'DUPLICATE_RESOURCE',
+        field: 'email',
+      },
     })
   })
 })
