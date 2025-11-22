@@ -13,7 +13,8 @@ This directory contains comprehensive documentation for the Synapsis project. St
 - **[Row Level Security (RLS)](./row-level-security.md)** - RLS implementation, usage patterns, and security best practices
 
 ### 📋 Implementation
-- **[Implementation Tasks](./implementation-tasks.md)** - Step-by-step task breakdown with effort estimates and dependencies
+- **[Backlog Setup](./backlog-setup.md)** - Task management with Backlog.md - **START HERE for task management**
+- **[Implementation Tasks](./implementation-tasks.md)** - Original task breakdown reference (now managed via Backlog.md)
 
 ### 🎯 For AI Coding Agents
 - **[../.github/copilot-instructions.md](../.github/copilot-instructions.md)** - Essential patterns and conventions for AI agents

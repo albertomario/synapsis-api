@@ -1,5 +1,25 @@
 # Synapsis - AI Coding Agent Instructions
 
+## 📋 Task Management
+
+**This project uses [Backlog.md](https://github.com/MrLesk/Backlog.md)** for task management. All tasks are stored in the `backlog/` directory.
+
+### Quick Task Commands
+```bash
+backlog board              # View Kanban board
+backlog browser            # Open web interface
+backlog task list          # List all tasks
+backlog task <id>          # View specific task
+backlog task edit <id>     # Update task status/notes
+```
+
+### Working with Tasks
+- **Reference tasks** by ID (e.g., `task-1.11`) when implementing features
+- **Update task status** when starting work: `backlog task edit 1.11 -s "In Progress"`
+- **Add implementation notes**: `backlog task edit 1.11 --append-notes "Your notes here"`
+- **Mark complete**: `backlog task edit 1.11 -s "Done"`
+- See `BACKLOG-COMMANDS.md` for complete command reference
+
 ## Architecture Overview
 
 This is a **pnpm monorepo** for a privacy-first Student Information System (SIS) with EU GDPR compliance. The architecture consists of:

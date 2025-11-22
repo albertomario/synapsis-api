@@ -1,5 +1,15 @@
 # Synapsis - Implementation Tasks
 
+> **📋 NOTE**: This project now uses [Backlog.md](https://github.com/MrLesk/Backlog.md) for active task management. This document serves as a reference for the original task breakdown. For current task status and management, use:
+>
+> ```bash
+> backlog board          # View Kanban board
+> backlog browser        # Open web interface
+> backlog task list      # List all tasks
+> ```
+>
+> See **[docs/backlog-setup.md](./backlog-setup.md)** for complete setup and usage instructions.
+
 ## Overview
 
 This document provides a step-by-step implementation guide for building the Synapsis MVP. Tasks are organized into phases with dependencies clearly marked. Estimated effort is provided in hours.
@@ -7,19 +17,19 @@ This document provides a step-by-step implementation guide for building the Syna
 ## Phase 1: Foundation & Infrastructure (Week 1)
 
 ### 1.1 Database Setup
-- [ ] **Task 1.1.1**: Create database migrations (8h)
-  - [ ] Create `users` table migration
-  - [ ] Create `students` table migration
-  - [ ] Create `teachers` table migration
-  - [ ] Create `parental_consents` table migration
-  - [ ] Create `access_tokens` table migration
-  - [ ] Create `audit_logs` table migration
+- [x] **Task 1.1.1**: Create database migrations (8h)
+  - [x] Create `users` table migration
+  - [x] Create `students` table migration
+  - [x] Create `teachers` table migration
+  - [x] Create `parental_consents` table migration
+  - [x] Create `access_tokens` table migration
+  - [x] Create `audit_logs` table migration
   - [ ] Run migrations and verify schema
   - **Command**: `node ace make:migration create_users_table`
   - **Files**: `database/migrations/TIMESTAMP_create_users_table.ts`
 
-- [ ] **Task 1.1.2**: Create database seeders (4h)
-  - [ ] Create user seeder (students, teachers, admins)
+- [x] **Task 1.1.2**: Create database seeders (4h)
+  - [x] Create user seeder (students, teachers, admins)
   - [ ] Create test data seeder (grades, assignments)
   - [ ] Run seeders in development environment
   - **Command**: `node ace make:seeder user && node ace db:seed`
@@ -36,41 +46,41 @@ This document provides a step-by-step implementation guide for building the Syna
 **Documentation**: `docs/database-schema.md`
 
 ### 1.2 Authentication System
-- [ ] **Task 1.2.1**: Install and configure AdonisJS Auth (2h)
-  - [ ] Install `@adonisjs/auth` package
-  - [ ] Configure auth provider in `adonisrc.ts`
-  - [ ] Create `config/auth.ts` configuration
+- [x] **Task 1.2.1**: Install and configure AdonisJS Auth (2h)
+  - [x] Install `@adonisjs/auth` package
+  - [x] Configure auth provider in `adonisrc.ts`
+  - [x] Create `config/auth.ts` configuration
   - **Command**: `pnpm add @adonisjs/auth && node ace configure @adonisjs/auth`
   - **Files**: `config/auth.ts`, `adonisrc.ts`
 
-- [ ] **Task 1.2.2**: Create User and related models (6h)
-  - [ ] Create `User` Lucid model
-  - [ ] Create `Student` Lucid model with relationships
-  - [ ] Create `Teacher` Lucid model with relationships
-  - [ ] Create `ParentalConsent` Lucid model
+- [x] **Task 1.2.2**: Create User and related models (6h)
+  - [x] Create `User` Lucid model
+  - [x] Create `Student` Lucid model with relationships
+  - [x] Create `Teacher` Lucid model with relationships
+  - [x] Create `ParentalConsent` Lucid model
   - [ ] Add model relationships (belongsTo, hasOne, hasMany)
   - **Command**: `node ace make:model User && node ace make:model Student`
   - **Files**: `app/models/user.ts`, `app/models/student.ts`, `app/models/teacher.ts`
 
-- [ ] **Task 1.2.3**: Create authentication validators (3h)
-  - [ ] Create `LoginValidator` with VineJS
-  - [ ] Create `RegisterValidator` with VineJS
+- [x] **Task 1.2.3**: Create authentication validators (3h)
+  - [x] Create `LoginValidator` with VineJS
+  - [x] Create `RegisterValidator` with VineJS
   - [ ] Create `PasswordValidator` with complexity rules
   - [ ] Test validators with edge cases
   - **Files**: `app/validators/login_validator.ts`, `app/validators/register_validator.ts`
 
-- [ ] **Task 1.2.4**: Build AuthController (8h)
-  - [ ] Implement `login()` method with consent tracking
-  - [ ] Implement `register()` method with validation
-  - [ ] Implement `logout()` method with token revocation
-  - [ ] Implement `me()` method to get current user
+- [x] **Task 1.2.4**: Build AuthController (8h)
+  - [x] Implement `login()` method with consent tracking
+  - [x] Implement `register()` method with validation
+  - [x] Implement `logout()` method with token revocation
+  - [x] Implement `me()` method to get current user
   - [ ] Add failed login protection (5 attempts lock)
   - [ ] Test all endpoints with Postman/Insomnia
   - **Files**: `app/controllers/auth_controller.ts`
   - **Routes**: `POST /api/v1/auth/login`, `POST /api/v1/auth/register`, `POST /api/v1/auth/logout`, `GET /api/v1/auth/me`
 
-- [ ] **Task 1.2.5**: Create authentication middleware (4h)
-  - [ ] Create `auth` middleware (uses AdonisJS built-in)
+- [x] **Task 1.2.5**: Create authentication middleware (4h)
+  - [x] Create `auth` middleware (uses AdonisJS built-in)
   - [ ] Create `gdpr_guard` middleware for parental consent
   - [ ] Create `role_guard` middleware for RBAC
   - [ ] Test middleware chain with protected routes
@@ -91,9 +101,9 @@ This document provides a step-by-step implementation guide for building the Syna
   - [ ] Create `can()` permission helper
   - **Files**: `app/services/db_service.ts`
 
-- [ ] **Task 1.3.2**: Create AuditLog model (2h)
-  - [ ] Create `audit_logs` table migration
-  - [ ] Create `AuditLog` Lucid model
+- [x] **Task 1.3.2**: Create AuditLog model (2h)
+  - [x] Create `audit_logs` table migration
+  - [x] Create `AuditLog` Lucid model
   - [ ] Test audit log creation
   - **Command**: `node ace make:migration create_audit_logs_table`
   - **Files**: `app/models/audit_log.ts`
@@ -113,7 +123,7 @@ This document provides a step-by-step implementation guide for building the Syna
 
 ### 1.4 Shared Types Package
 - [ ] **Task 1.4.1**: Create DTO interfaces (4h)
-  - [ ] Create `UserDTO` interface
+  - [x] Create `UserDTO` interface
   - [ ] Create `GradeDTO` interface
   - [ ] Create `AssignmentDTO` interface
   - [ ] Create `AnnouncementDTO` interface
@@ -139,12 +149,12 @@ This document provides a step-by-step implementation guide for building the Syna
   - **Command**: `node ace make:model Grade`
   - **Files**: `app/models/grade.ts`
 
-- [ ] **Task 2.1.2**: Build GradebookController (8h)
-  - [ ] Implement `index()` - list grades with RLS
-  - [ ] Implement `show()` - get single grade
-  - [ ] Implement `store()` - create grade (teachers only)
-  - [ ] Implement `update()` - update grade (teachers only)
-  - [ ] Implement `dashboard()` - summary with trends
+- [x] **Task 2.1.2**: Build GradebookController (8h)
+  - [x] Implement `index()` - list grades with RLS
+  - [x] Implement `show()` - get single grade
+  - [x] Implement `store()` - create grade (teachers only)
+  - [x] Implement `update()` - update grade (teachers only)
+  - [x] Implement `dashboard()` - summary with trends
   - [ ] Add calculation_basis field for explainability
   - [ ] Test all endpoints
   - **Files**: `app/controllers/gradebook_controller.ts`
@@ -169,11 +179,11 @@ This document provides a step-by-step implementation guide for building the Syna
   - **Command**: `node ace make:model Assignment && node ace make:model AssignmentSubmission`
   - **Files**: `app/models/assignment.ts`, `app/models/assignment_submission.ts`
 
-- [ ] **Task 2.2.2**: Build AssignmentsController (10h)
-  - [ ] Implement `index()` - list assignments with RLS
-  - [ ] Implement `show()` - get single assignment
-  - [ ] Implement `store()` - create assignment (teachers)
-  - [ ] Implement `complete()` - mark assignment done (students)
+- [x] **Task 2.2.2**: Build AssignmentsController (10h)
+  - [x] Implement `index()` - list assignments with RLS
+  - [x] Implement `show()` - get single assignment
+  - [x] Implement `store()` - create assignment (teachers)
+  - [x] Implement `complete()` - mark assignment done (students)
   - [ ] Implement `submit()` - submit assignment (students)
   - [ ] Filter external links for users <16
   - [ ] Test all endpoints
@@ -192,9 +202,9 @@ This document provides a step-by-step implementation guide for building the Syna
   - **Command**: `node ace make:model Announcement`
   - **Files**: `app/models/announcement.ts`
 
-- [ ] **Task 2.3.2**: Build FeedController (6h)
-  - [ ] Implement `index()` - timeline feed with RLS
-  - [ ] Implement `store()` - create announcement (teachers)
+- [x] **Task 2.3.2**: Build FeedController (6h)
+  - [x] Implement `index()` - timeline feed with RLS
+  - [x] Implement `store()` - create announcement (teachers)
   - [ ] Filter by target_audience (grade_level, section)
   - [ ] Add pagination with cursor
   - [ ] Test feed filtering
@@ -213,10 +223,10 @@ This document provides a step-by-step implementation guide for building the Syna
   - [ ] Implement streaming response
   - **Files**: `app/services/gdpr_service.ts`
 
-- [ ] **Task 2.4.2**: Build VaultController (6h)
-  - [ ] Implement `export()` - trigger data export
-  - [ ] Implement `updatePreferences()` - update GDPR settings
-  - [ ] Implement `scheduleDelete()` - "Forget Me" feature
+- [x] **Task 2.4.2**: Build VaultController (6h)
+  - [x] Implement `export()` - trigger data export
+  - [x] Implement `updatePreferences()` - update GDPR settings
+  - [x] Implement `scheduleDelete()` - "Forget Me" feature
   - [ ] Test export functionality
   - **Files**: `app/controllers/vault_controller.ts`
   - **Routes**: `POST /api/v1/gdpr/export`, `PATCH /api/v1/gdpr/preferences`
@@ -359,13 +369,13 @@ This document provides a step-by-step implementation guide for building the Syna
 ## Phase 4: Testing & Polish (Week 4)
 
 ### 4.1 Backend Testing
-- [ ] **Task 4.1.1**: Write integration tests (12h)
-  - [ ] Test auth flow (login, logout, token validation)
+- [x] **Task 4.1.1**: Write integration tests (12h)
+  - [x] Test auth flow (login, logout, token validation)
   - [ ] Test RLS for all user types
-  - [ ] Test GDPR export functionality
+  - [x] Test GDPR export functionality
   - [ ] Test parental consent middleware
-  - [ ] Test grade CRUD operations
-  - [ ] Test assignment submission flow
+  - [x] Test grade CRUD operations
+  - [x] Test assignment submission flow
   - **Command**: `node ace test`
   - **Files**: `tests/functional/auth.spec.ts`, `tests/functional/grades.spec.ts`
 
