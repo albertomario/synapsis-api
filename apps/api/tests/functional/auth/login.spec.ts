@@ -3,7 +3,7 @@ import User from '#models/user'
 import { DateTime } from 'luxon'
 import hash from '@adonisjs/core/services/hash'
 
-test.group('Auth login', (group) => {
+test.group('Auth login', (_group) => {
   // Removed global delete
 
   test('login with valid credentials', async ({ client }) => {

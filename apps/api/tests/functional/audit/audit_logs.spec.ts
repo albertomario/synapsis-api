@@ -130,7 +130,7 @@ test.group('Audit Logs - Querying', () => {
       userId: user.id,
       action: 'test.action',
       resourceType: 'test',
-      resourceId: BigInt(1),
+      resourceId: 1,
     })
 
     const logs = await AuditLog.query().where('user_id', user.id)
@@ -154,7 +154,7 @@ test.group('Audit Logs - Querying', () => {
       userId: user.id,
       action: 'specific.test.action',
       resourceType: 'test',
-      resourceId: BigInt(1),
+      resourceId: 1,
     })
 
     const logs = await AuditLog.query().where('action', 'specific.test.action')
@@ -178,7 +178,7 @@ test.group('Audit Logs - Querying', () => {
       userId: user.id,
       action: 'time.test.action',
       resourceType: 'test',
-      resourceId: BigInt(1),
+      resourceId: 1,
     })
 
     const oneDayAgo = DateTime.now().minus({ days: 1 })

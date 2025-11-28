@@ -21,7 +21,6 @@ const loggerConfig = defineConfig({
           .push(
             targets.file({
               destination: app.makePath('tmp/logs/app.log'),
-              level: 'debug',
             })
           )
           .toArray(),

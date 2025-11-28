@@ -45,7 +45,7 @@ export default class HttpExceptionHandler extends ExceptionHandler {
           message: 'Validation failed',
           status: 422,
         },
-        errors: error.messages.map((message) => ({
+        errors: error.messages.map((message: { field: string; message: string; rule: string }) => ({
           field: message.field,
           message: message.message,
           rule: message.rule,

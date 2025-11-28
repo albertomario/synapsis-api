@@ -35,7 +35,7 @@ const commonPasswords = [
  * Custom VineJS rule to validate password complexity
  */
 const passwordComplexity = vine.createRule(
-  async (value: unknown, options: any, field: FieldContext) => {
+  async (value: unknown, _options: any, field: FieldContext) => {
     if (typeof value !== 'string') {
       field.report('Password must be a string', 'passwordComplexity', field)
       return

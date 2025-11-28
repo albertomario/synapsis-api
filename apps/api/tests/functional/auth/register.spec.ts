@@ -2,7 +2,7 @@ import { test } from '@japa/runner'
 import User from '#models/user'
 import { DateTime } from 'luxon'
 
-test.group('Auth register', (group) => {
+test.group('Auth register', (_group) => {
   // Removed global delete to preserve seeds
 
   test('register a new user', async ({ client }) => {
