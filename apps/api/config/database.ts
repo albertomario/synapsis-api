@@ -1,6 +1,5 @@
 import env from '#start/env'
 import { defineConfig } from '@adonisjs/lucid'
-// @ts-expect-error pg module lacks type declarations
 import pg from 'pg'
 
 // Configure pg to parse jsonb columns as objects
