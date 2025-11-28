@@ -3,8 +3,8 @@ import { defineConfig } from '@adonisjs/lucid'
 import pg from 'pg'
 
 // Configure pg to parse jsonb columns as objects
-pg.types.setTypeParser(pg.types.builtins.JSONB, (val) => JSON.parse(val))
-pg.types.setTypeParser(pg.types.builtins.JSON, (val) => JSON.parse(val))
+pg.types.setTypeParser(pg.types.builtins.JSONB, (val: string) => JSON.parse(val))
+pg.types.setTypeParser(pg.types.builtins.JSON, (val: string) => JSON.parse(val))
 
 const dbConfig = defineConfig({
   connection: 'postgres',

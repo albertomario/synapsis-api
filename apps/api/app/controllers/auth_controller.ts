@@ -61,7 +61,7 @@ export default class AuthController {
         const minutesRemaining = Math.ceil(user.accountLockedUntil.diff(now, 'minutes').minutes)
         throw new AccountLockedException(
           `Account locked due to too many failed login attempts. Try again in ${minutesRemaining} minute(s).`,
-          user.accountLockedUntil.toISO()
+          user.accountLockedUntil.toISO() ?? undefined
         )
       } else {
         // Lock expired, reset attempts
@@ -84,7 +84,7 @@ export default class AuthController {
 
         throw new AccountLockedException(
           'Account locked due to too many failed login attempts. Try again in 15 minutes.',
-          user.accountLockedUntil.toISO()
+          user.accountLockedUntil.toISO() ?? undefined
         )
       }
 

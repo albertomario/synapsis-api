@@ -43,9 +43,9 @@ export default class GdprGuardMiddleware {
         await student.load('parentalConsents')
 
         const activeConsents = student.parentalConsents.filter((consent) => {
-          // Check if consent is active (not revoked and not expired)
+          // Check if consent is active (granted, not revoked, and not expired)
           return (
-            consent.consentGiven === true &&
+            consent.grantedAt !== null &&
             !consent.revokedAt &&
             (!consent.expiresAt || consent.expiresAt > DateTime.now())
           )

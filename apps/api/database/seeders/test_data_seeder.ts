@@ -8,7 +8,7 @@ import { DateTime } from 'luxon'
 export default class extends BaseSeeder {
   async run() {
     // Create admin user
-    const admin = await User.create({
+    await User.create({
       email: 'admin@snapsis.edu',
       passwordHash: await hash.make('Admin123!@#'),
       fullName: 'System Administrator',
@@ -234,7 +234,7 @@ export default class extends BaseSeeder {
     })
 
     // Create parent user for students under 16
-    const parent1 = await User.create({
+    await User.create({
       email: 'parent.wilson@example.com',
       passwordHash: await hash.make('Parent123!'),
       fullName: 'Robert Wilson',

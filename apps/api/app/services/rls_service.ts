@@ -2,6 +2,11 @@ import type { ModelQueryBuilderContract } from '@adonisjs/lucid/types/model'
 import type User from '#models/user'
 
 /**
+ * Type alias for query builder callbacks in RLS filtering
+ */
+type QueryBuilderCallback = ModelQueryBuilderContract<any, any>
+
+/**
  * Row-Level Security (RLS) Service
  *
  * Implements data access control based on user context.
@@ -146,20 +151,22 @@ function applyParentRLS<T extends ModelQueryBuilderContract<any, any>>(query: T,
     case 'Assignment':
     case 'Submission':
       // Parents can see data for their children
-      return query.whereHas('student', (studentQuery) => {
-        studentQuery.whereHas('parentalConsents', (consentQuery) => {
-          consentQuery.where('parent_id', user.id).where('consent_given', true)
+      return query.whereHas('student', (studentQuery: QueryBuilderCallback) => {
+        studentQuery.whereHas('parentalConsents', (consentQuery: QueryBuilderCallback) => {
+          consentQuery.where('parent_id', user.id).whereNotNull('granted_at')
         })
       }) as T
 
     case 'User':
       // Parents can only see their children's profiles
       return query.where((subQuery) => {
-        subQuery.where('id', user.id).orWhereHas('student', (studentQuery) => {
-          studentQuery.whereHas('parentalConsents', (consentQuery) => {
-            consentQuery.where('parent_id', user.id).where('consent_given', true)
+        subQuery
+          .where('id', user.id)
+          .orWhereHas('student', (studentQuery: QueryBuilderCallback) => {
+            studentQuery.whereHas('parentalConsents', (consentQuery: QueryBuilderCallback) => {
+              consentQuery.where('parent_id', user.id).whereNotNull('granted_at')
+            })
           })
-        })
       }) as T
 
     default:
