@@ -24,21 +24,21 @@ This document provides a step-by-step implementation guide for building the Syna
   - [x] Create `parental_consents` table migration
   - [x] Create `access_tokens` table migration
   - [x] Create `audit_logs` table migration
-  - [ ] Run migrations and verify schema
+  - [x] Run migrations and verify schema
   - **Command**: `node ace make:migration create_users_table`
   - **Files**: `database/migrations/TIMESTAMP_create_users_table.ts`
 
 - [x] **Task 1.1.2**: Create database seeders (4h)
   - [x] Create user seeder (students, teachers, admins)
-  - [ ] Create test data seeder (grades, assignments)
-  - [ ] Run seeders in development environment
+  - [x] Create test data seeder (grades, assignments)
+  - [x] Run seeders in development environment
   - **Command**: `node ace make:seeder user && node ace db:seed`
   - **Files**: `database/seeders/user_seeder.ts`
 
-- [ ] **Task 1.1.3**: Configure database indexes (2h)
-  - [ ] Add indexes for frequently queried columns
-  - [ ] Add composite indexes for RLS queries
-  - [ ] Test query performance with `EXPLAIN ANALYZE`
+- [x] **Task 1.1.3**: Configure database indexes (2h)
+  - [x] Add indexes for frequently queried columns
+  - [x] Add composite indexes for RLS queries
+  - [x] Test query performance with `EXPLAIN ANALYZE`
   - **Files**: Update migration files with indexes
 
 **Dependencies**: None  
@@ -58,15 +58,15 @@ This document provides a step-by-step implementation guide for building the Syna
   - [x] Create `Student` Lucid model with relationships
   - [x] Create `Teacher` Lucid model with relationships
   - [x] Create `ParentalConsent` Lucid model
-  - [ ] Add model relationships (belongsTo, hasOne, hasMany)
+  - [x] Add model relationships (belongsTo, hasOne, hasMany)
   - **Command**: `node ace make:model User && node ace make:model Student`
   - **Files**: `app/models/user.ts`, `app/models/student.ts`, `app/models/teacher.ts`
 
 - [x] **Task 1.2.3**: Create authentication validators (3h)
   - [x] Create `LoginValidator` with VineJS
   - [x] Create `RegisterValidator` with VineJS
-  - [ ] Create `PasswordValidator` with complexity rules
-  - [ ] Test validators with edge cases
+  - [x] Create `PasswordValidator` with complexity rules
+  - [x] Test validators with edge cases
   - **Files**: `app/validators/login_validator.ts`, `app/validators/register_validator.ts`
 
 - [x] **Task 1.2.4**: Build AuthController (8h)
@@ -74,16 +74,16 @@ This document provides a step-by-step implementation guide for building the Syna
   - [x] Implement `register()` method with validation
   - [x] Implement `logout()` method with token revocation
   - [x] Implement `me()` method to get current user
-  - [ ] Add failed login protection (5 attempts lock)
-  - [ ] Test all endpoints with Postman/Insomnia
+  - [x] Add failed login protection (5 attempts lock)
+  - [x] Test all endpoints with Postman/Insomnia
   - **Files**: `app/controllers/auth_controller.ts`
   - **Routes**: `POST /api/v1/auth/login`, `POST /api/v1/auth/register`, `POST /api/v1/auth/logout`, `GET /api/v1/auth/me`
 
 - [x] **Task 1.2.5**: Create authentication middleware (4h)
   - [x] Create `auth` middleware (uses AdonisJS built-in)
-  - [ ] Create `gdpr_guard` middleware for parental consent
-  - [ ] Create `role_guard` middleware for RBAC
-  - [ ] Test middleware chain with protected routes
+  - [x] Create `gdpr_guard` middleware for parental consent
+  - [x] Create `role_guard` middleware for RBAC
+  - [x] Test middleware chain with protected routes
   - **Files**: `app/middleware/gdpr_guard.ts`, `app/middleware/role_guard.ts`
 
 **Dependencies**: Task 1.1 (Database)  
@@ -91,46 +91,46 @@ This document provides a step-by-step implementation guide for building the Syna
 **Documentation**: `docs/authentication-strategy.md`
 
 ### 1.3 Row Level Security (RLS)
-- [ ] **Task 1.3.1**: Create RLS service (10h)
-  - [ ] Create `db_service.ts` with `withRLS()` function
-  - [ ] Implement `RLSQueryBuilder` class
-  - [ ] Add student RLS rules
-  - [ ] Add teacher RLS rules
-  - [ ] Add parent RLS rules
-  - [ ] Add audit logging wrapper
-  - [ ] Create `can()` permission helper
-  - **Files**: `app/services/db_service.ts`
+- [x] **Task 1.3.1**: Create RLS service (10h)
+  - [x] Create `db_service.ts` with `withRLS()` function
+  - [x] Implement `RLSQueryBuilder` class
+  - [x] Add student RLS rules
+  - [x] Add teacher RLS rules
+  - [x] Add parent RLS rules
+  - [x] Add audit logging wrapper
+  - [x] Create `can()` permission helper
+  - **Files**: `app/services/rls_service.ts`
 
 - [x] **Task 1.3.2**: Create AuditLog model (2h)
   - [x] Create `audit_logs` table migration
   - [x] Create `AuditLog` Lucid model
-  - [ ] Test audit log creation
+  - [x] Test audit log creation
   - **Command**: `node ace make:migration create_audit_logs_table`
   - **Files**: `app/models/audit_log.ts`
 
-- [ ] **Task 1.3.3**: Write RLS unit tests (6h)
-  - [ ] Test student can only see own grades
-  - [ ] Test teacher can only see own classes
-  - [ ] Test parent can only see children's data
-  - [ ] Test admin has full access
-  - [ ] Test audit log creation
+- [x] **Task 1.3.3**: Write RLS unit tests (6h)
+  - [x] Test student can only see own grades
+  - [x] Test teacher can only see own classes
+  - [x] Test parent can only see children's data
+  - [x] Test admin has full access
+  - [x] Test audit log creation
   - **Command**: `node ace test`
-  - **Files**: `tests/unit/db_service.spec.ts`
+  - **Files**: `tests/unit/rls_service.spec.ts`
 
 **Dependencies**: Task 1.1 (Database), Task 1.2 (Auth)  
 **Total Effort**: 18h  
 **Documentation**: `docs/row-level-security.md`
 
 ### 1.4 Shared Types Package
-- [ ] **Task 1.4.1**: Create DTO interfaces (4h)
+- [x] **Task 1.4.1**: Create DTO interfaces (4h)
   - [x] Create `UserDTO` interface
-  - [ ] Create `GradeDTO` interface
-  - [ ] Create `AssignmentDTO` interface
-  - [ ] Create `AnnouncementDTO` interface
-  - [ ] Export all types from `index.ts`
-  - [ ] Build types package
+  - [x] Create `GradeDTO` interface
+  - [x] Create `AssignmentDTO` interface
+  - [x] Create `AnnouncementDTO` interface
+  - [x] Export all types from `index.ts`
+  - [x] Build types package
   - **Command**: `cd packages/types && pnpm build`
-  - **Files**: `packages/types/src/user.ts`, `packages/types/src/grade.ts`
+  - **Files**: `packages/types/src/index.ts`
 
 **Dependencies**: None  
 **Total Effort**: 4h  
